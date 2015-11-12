@@ -1,0 +1,11 @@
+---
+- hosts: admitad-bot
+  remote_user: root
+  sudo: yes
+  roles:
+    - python-base
+    - python-webapp
+  vars_files:
+    - env_vars/main.yml
+  vars:
+    - setup_git_repo: yes
