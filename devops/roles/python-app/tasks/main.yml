@@ -1,15 +1,20 @@
 ---
 
+- name: Create the virtualenv
+  command: virtualenv {{ virtualenv_path }} --no-site-packages
+           creates={{ virtualenv_path }}/bin/activate
+
 - name: Setup the Git repo
   git: repo={{ git_repo }}
        version="{{ git_branch }}"
        dest={{ project_path }}
        accept_hostkey=yes
   when: setup_git_repo is defined and setup_git_repo
-  tags: git
 
 - name: Delete all .pyc files
   command: find . -name '*.pyc' -delete
   args:
     chdir: "{{ project_path }}"
-  tags: git
+
+- name: Install packages required
+  pip: virtualenv={{ virtualenv_path }} requirements={{ requirements_file }}

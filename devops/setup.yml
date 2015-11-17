@@ -1,11 +1,35 @@
 ---
-- hosts: admitad-bot
+
+- hosts: sandbox
   remote_user: root
   sudo: yes
   roles:
     - python-base
-    - python-webapp
-  vars_files:
-    - env_vars/main.yml
+    - python-app
+    - gunicorn
+    - supervisor
+    - nginx
   vars:
-    - setup_git_repo: yes
+    app_name: servator
+    git_repo: foo
+
+    app_user: {{ app_name }}
+    app_group: webapps
+
+    virtualenv_path: /webapps/{{ app_name }}
+    serve_directory_path: {{ virtualenv_path }}/serve
+    project_path: {{ virtualenv_path }}/{{ app_name }}
+    application_log_dir: {{ virtualenv_path }}/logs
+    application_log_file: {{ application_log_dir }}/gunicorn_supervisor.log
+    requirements_file: {{ project_path }}/requirements.txt
+
+    nginx_server_name_re: ~^(?<subdomain>[a-z0-9]+)\.servator\.ws
+    nginx_upload_server_name_re: ~^servator\.ws www.servator.ws ""
+    nginx_port: 80
+    nginx_client_max_body_size: 20M
+
+    nginx_web_access_log_file: {{ application_log_dir }}/nginx_web_access.log
+    nginx_web_error_log_file: {{ application_log_dir }}/nginx_web_error.log
+
+    nginx_serve_access_log_file: {{ application_log_dir }}/nginx_serve_access.log
+    nginx_serve_error_log_file: {{ application_log_dir }}/nginx_serve_error.log

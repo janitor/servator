@@ -5,9 +5,9 @@
 NAME="{{ application_name }}"
 PROJECT_PATH="{{ project_path }}"
 SOCKFILE={{ virtualenv_path }}/run/gunicorn.sock
-USER={{ gunicorn_user }}
-GROUP={{ gunicorn_group }}
-NUM_WORKERS={{ gunicorn_num_workers }}
+USER={{ app_user }}
+GROUP={{ app_group }}
+NUM_WORKERS=4
 
 # Set this to 0 for unlimited requests. During development, you might want to
 # set this to 1 to automatically restart the process on each request (i.e. your

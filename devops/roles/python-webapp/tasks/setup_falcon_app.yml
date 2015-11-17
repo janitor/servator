@@ -1,4 +1,0 @@
----
-
-- name: Install packages required
-  pip: virtualenv={{ virtualenv_path }} requirements={{ requirements_file }}

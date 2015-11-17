@@ -1,0 +1,4 @@
+[program:{{ application_name }}-worker]
+command = {{ virtualenv_path }}/bin/rqworker {{ application_name }}
+user = {{ app_user }}
+directory = {{ project_path }}
