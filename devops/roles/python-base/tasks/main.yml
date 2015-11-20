@@ -19,12 +19,3 @@
 
 - name: Install virtualenv
   pip: name=virtualenv
-
-- name: Create the application user
-  user: name={{ app_user }} state=present
-
-- name: Create the application group
-  group: name={{ app_group }} state=present system=yes
-
-- name: Add the application user to the application group
-  user: name={{ app_user }} group={{ app_group }} state=present

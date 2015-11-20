@@ -11,6 +11,15 @@
        accept_hostkey=yes
   when: setup_git_repo is defined and setup_git_repo
 
+- name: Setup project conf
+  template: src=conf.py.j2
+            dest={{ project_path }}/conf_local.py
+            backup=yes
+  when: setup_git_repo is defined and setup_git_repo
+
+- name: Create serve directory
+  file: path={{ serve_directory_path }} state=directory mode=0755
+
 - name: Delete all .pyc files
   command: find . -name '*.pyc' -delete
   args:

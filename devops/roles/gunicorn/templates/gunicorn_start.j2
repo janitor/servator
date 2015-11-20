@@ -2,11 +2,11 @@
 
 # https://github.com/jcalazan/ansible-django-stack/blob/master/roles/web/templates/gunicorn_start.j2
 
-NAME="{{ application_name }}"
+NAME="{{ app_name }}"
 PROJECT_PATH="{{ project_path }}"
 SOCKFILE={{ virtualenv_path }}/run/gunicorn.sock
-USER={{ app_user }}
-GROUP={{ app_group }}
+USER={{ gunicorn_user }}
+GROUP={{ gunicorn_group }}
 NUM_WORKERS=4
 
 # Set this to 0 for unlimited requests. During development, you might want to

@@ -6,7 +6,7 @@
 
 - name: Create the Supervisor app config file
   template: src=app.conf.j2
-            dest=/etc/supervisor/conf.d/{{ application_name }}.conf
+            dest=/etc/supervisor/conf.d/{{ app_name }}.conf
             backup=yes
   # notify:
   #   - re-read supervisor conf
@@ -14,7 +14,7 @@
 
 - name: Create the Supervisor rq worker config file
   template: src=worker.conf.j2
-            dest=/etc/supervisor/conf.d/{{ application_name }}_worker.conf
+            dest=/etc/supervisor/conf.d/{{ app_name }}_worker.conf
             backup=yes
   # notify:
   #   - re-read supervisor conf

@@ -1,7 +1,7 @@
 ---
 
 - name: re-read supervisor conf
-  supervisorctl: name={{ application_name }} state=present
+  supervisorctl: name={{ app_name }} state=present
 
 - name: restart supervisor
-  supervisorctl: name={{ application_name }} state=restarted
+  supervisorctl: name={{ app_name }} state=restarted

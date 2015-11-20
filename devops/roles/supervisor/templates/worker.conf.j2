@@ -1,4 +1,4 @@
-[program:{{ application_name }}-worker]
-command = {{ virtualenv_path }}/bin/rqworker {{ application_name }}
-user = {{ app_user }}
+[program:{{ app_name }}-worker]
+command = {{ virtualenv_path }}/bin/rqworker {{ app_name }}
+user = {{ gunicorn_user }}
 directory = {{ project_path }}

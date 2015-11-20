@@ -1,20 +1,29 @@
 ---
 
+- name: Create the application user
+  user: name={{ gunicorn_user }} state=present
+
+- name: Create the application group
+  group: name={{ gunicorn_group }} state=present system=yes
+
+- name: Add the application user to the application group
+  user: name={{ gunicorn_user }} group={{ gunicorn_group }} state=present
+
 - name: Ensure gunicorn is installed
   pip: virtualenv={{ virtualenv_path }} name=gunicorn
 
 - name: Create the Gunicorn script file
   template: src=gunicorn_start.j2
             dest={{ virtualenv_path }}/bin/gunicorn_start
-            owner={{ app_user }}
-            group={{ app_group }}
+            owner={{ gunicorn_user }}
+            group={{ gunicorn_group }}
             mode=0755
             backup=yes
 
 - name: Create the application log folder
   file: path={{ application_log_dir }}
-        owner={{ app_user }}
-        group={{ app_group }}
+        owner={{ gunicorn_user }}
+        group={{ gunicorn_group }}
         mode=0774
         state=directory
 
@@ -24,14 +33,14 @@
 
 - name: Set permission to the application log file
   file: path={{ application_log_file }}
-        owner={{ app_user }}
-        group={{ app_group }}
+        owner={{ gunicorn_user }}
+        group={{ gunicorn_group }}
         mode=0664
         state=file
 
 - name: Ensure that the application file permissions are set properly
   file: path={{ virtualenv_path }}
         recurse=yes
-        owner={{ app_user }}
-        group={{ app_group }}
+        owner={{ gunicorn_user }}
+        group={{ gunicorn_group }}
         state=directory
