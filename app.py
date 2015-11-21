@@ -8,9 +8,6 @@ import time
 import random
 import os
 
-# import redis
-# import rq
-
 from flask.views import MethodView
 from flask import Flask
 from flask import request, redirect
@@ -18,9 +15,6 @@ from werkzeug.exceptions import BadRequest, UnsupportedMediaType
 
 import conf
 
-
-# rds = redis.Redis(host=conf.REDIS_HOST, port=conf.REDIS_PORT)
-# rq_queue = rq.Queue(connection=rds)
 app = Flask('servator')
 
 @app.route('/', methods=['GET'])

@@ -1,5 +1,5 @@
 [program:{{ app_name }}]
-command = {{ virtualenv_path }}/bin/gunicorn_start
-user = {{ gunicorn_user }}
+command = {{ virtualenv_path }}/bin/uwsgi {{ virtualenv_path }}/uwsgi.ini
+user = {{ uwsi_user }}
 stdout_logfile = {{ application_log_file }}
 redirect_stderr = true

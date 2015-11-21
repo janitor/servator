@@ -1,0 +1,15 @@
+[uwsgi]
+autoload = true
+virtualenv = {{ virtualenv_path }}
+pythonpath = {{ project_path }}
+chdir = {{ project_path }}
+master = True
+vacuum = True
+pidfile = {{ virtualenv_path }}/run/uwsgi.pid
+socket = {{ virtualenv_path }}/run/uwsgi.sock
+workers = 2
+chmod-socket = 666
+module = app
+callable = app
+uid = {{ uwsi_user }}
+gid = {{ uwsi_group }}
