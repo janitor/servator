@@ -8,4 +8,4 @@
             dest=/etc/supervisor/conf.d/{{ app_name }}.conf
             backup=yes
   notify:
-    - re-read supervisor conf
+    - reload supervisor

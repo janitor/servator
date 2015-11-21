@@ -8,7 +8,7 @@
     - env_vars/{{ env }}.yml
   roles:
     - python-base
-    - python-app
+    - wsgi-app
     - uwsgi
     - supervisor
     - nginx
