@@ -39,7 +39,7 @@ class UploadHandler(MethodView):
             serve_code = self.handle_html(serve)
         else:
             raise UnsupportedMediaType()
-        return get_serve_url(serve_code)
+        return get_serve_redirect(serve_code)
 
     def handle_zip(self, serve):
         serve_directory, serve_code = get_serve_directory(serve.filename, create=False)
@@ -56,7 +56,11 @@ app.add_url_rule('/upload', view_func=UploadHandler.as_view(b'upload'))
 
 
 def get_serve_url(serve_code):
-    return '%s%s' % (serve_code, conf.SERVATOR_DOMAIN)
+    return 'http://%s%s' % (serve_code, conf.SERVATOR_DOMAIN)
+
+
+def get_serve_redirect(serve_code):
+    return redirect(get_serve_url(serve_code))
 
 
 def get_serve_directory(filename, create=True):
