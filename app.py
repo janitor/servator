@@ -11,19 +11,17 @@ import os
 from flask.views import MethodView
 from flask import Flask
 from flask import request, redirect
+from flask.templating import render_template
 from werkzeug.exceptions import BadRequest, UnsupportedMediaType
 
 import conf
 
 app = Flask('servator')
 
+
 @app.route('/', methods=['GET'])
 def index():
-    return """
-    <form method="POST" action="/upload" enctype="multipart/form-data">
-        <input name="serve" type="file">
-        <input type="submit">
-    </form>"""
+    return render_template('index.html')
 
 
 class UploadHandler(MethodView):
