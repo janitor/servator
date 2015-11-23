@@ -38,6 +38,10 @@ server {
 
     proxy_read_timeout 120;
 
+    location /static/ {
+        alias {{ project_path }}/static;
+    }
+
     location / {
         include uwsgi_params;
         uwsgi_pass {{ app_name }}_wsgi_server;
