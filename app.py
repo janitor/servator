@@ -7,11 +7,10 @@ import hashlib
 import time
 import random
 import os
-import json
 
 from flask.views import MethodView
 from flask import Flask
-from flask import request, redirect
+from flask import request, redirect, jsonify
 from flask.templating import render_template
 from werkzeug.exceptions import BadRequest, UnsupportedMediaType
 
@@ -67,11 +66,7 @@ class ApiUploadHandler(UploadHandlerBase):
 
     def get_response(self, serve_code):
         serve_url = get_serve_url(serve_code)
-        return json.dumps(dict(
-            result=dict(
-                serve_url=serve_url,
-            )
-        ))
+        return jsonify(dict(result=dict(serve_url=serve_url)))
 app.add_url_rule('/api/upload', view_func=ApiUploadHandler.as_view(b'api_upload'))
 
 
