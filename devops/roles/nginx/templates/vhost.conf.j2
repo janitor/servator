@@ -39,7 +39,7 @@ server {
     proxy_read_timeout 120;
 
     location /static/ {
-        alias {{ project_path }}/static;
+        alias {{ project_path }}/static/;
     }
 
     location / {
