@@ -36,7 +36,7 @@ class UploadHandlerBase(MethodView):
         elif mimetype == 'text/html':
             serve_code = self.handle_html(serve)
         else:
-            raise UnsupportedMediaType()
+            raise UnsupportedMediaType(mimetype)
         return self.get_response(serve_code)
 
     def get_response(self, serve_code):

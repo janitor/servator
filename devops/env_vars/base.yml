@@ -1,7 +1,7 @@
 ---
 
 app_name: servator
-git_repo: git@bitbucket.org:janitor/servator.git
+git_repo: https://github.com/janitor/servator.git
 
 uwsi_user: "{{ app_name }}"
 uwsi_group: webapps
