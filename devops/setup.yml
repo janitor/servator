@@ -2,7 +2,7 @@
 
 - hosts: sandbox
   remote_user: root
-  sudo: yes
+  become: yes
   vars_files:
     - env_vars/base.yml
   roles:
