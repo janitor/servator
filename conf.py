@@ -1,7 +1,7 @@
 
 SERVE_DIRECTORY_PATH = '/Users/raman/Development/servator/serve'
 
-SERVATOR_DOMAIN = '.servator.ws'
+SERVATOR_DOMAIN = '.serve.janitorrb.com'
 
 
 try:
