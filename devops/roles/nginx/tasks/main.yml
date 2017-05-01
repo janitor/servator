@@ -16,8 +16,7 @@
 
 - name: Create Nginx configuration file
   template: src=vhost.conf.j2
-            dest=/etc/nginx/conf.d/{{ app_name }}.conf
-            backup=yes
+            dest=/etc/nginx/sites-enabled/{{ app_name }}
   notify:
     - reload nginx
     - restart nginx

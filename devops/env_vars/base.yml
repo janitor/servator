@@ -13,8 +13,8 @@ application_log_dir: "{{ virtualenv_path }}/logs"
 application_log_file: "{{ application_log_dir }}/gunicorn_supervisor.log"
 requirements_file: "{{ project_path }}/requirements.txt"
 
-nginx_server_name_re: ~^(?<subdomain>[a-z0-9]+)\.servator\.ws ~^(?<subdomain>[a-z0-9]+)\.serve\.janitorrb\.com
-nginx_upload_server_name_re: ~^servator\.ws www.servator.ws ~^serve\.janitorrb\.com ""
+nginx_server_name_re: ~^(?<subdomain>[a-z0-9]+)\.s\.janitorrb\.com
+nginx_upload_server_name_re: ~^servator\.janitorrb\.com servator.janitorrb.com ""
 nginx_port: 80
 nginx_client_max_body_size: 20M
 
